@@ -1,0 +1,77 @@
+﻿
+@using QL_THUCUNG.Models
+@model List<SanPham>
+@{
+    ViewBag.Title = "Sửa giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    #giohang {
+        border: 1px solid #808080ff;
+        margin-left: 10%;
+    }
+
+        #giohang td {
+            padding: 10px;
+            border: 1px solid #808080ff;
+        }
+</style>
+<h2>Trang giỏ sản phẩm</h2>
+<table border="1" id="giohang">
+    <tr>
+        <td>
+            Mã sản phẩm
+        </td>
+        <td>
+            Tên sản phẩm
+        </td>
+        <td>
+            Ảnh sản phẩm
+        </td>
+
+        <td>
+            Đơn giá
+        </td>
+
+        <td>
+            Số lượng
+        </td>
+        <td>
+            Thành tiền
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item._MaSP
+            </td>
+            <td>
+                @item.tenSP
+            </td>
+            <td>
+                <img src="@Url.Content("~/Images/"+ item.AnhSP)" width="50" height="50" />
+            </td>
+            <td>
+                @String.Format("{0:0,0}", item.DonGia) VNĐ
+            </td>
+            @using (Html.BeginForm("CapNhat", "SanPham", new { @madv = item._MaSP }))
+            {
+                <td>
+                    @Html.TextBox("txtSoLuong", item.SoLuong)
+                </td>
+                <td>
+                    @String.Format("{0:0,0}", item.ThanhTien) VNĐ
+                </td>
+                <td>
+                    <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                    <a href="@Url.Action("Xoa", "SanPham", new { @madv = item._MaSP })" type="button" style="cursor:pointer" class="btn btn-primary">Xóa</a>
+                </td>
+
+            }
+
+        </tr>
+    }
+</table>
+
+

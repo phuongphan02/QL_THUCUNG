@@ -1,0 +1,53 @@
+﻿@model List<QL_THUCUNG.Models.HoaDon>
+
+@{
+    ViewBag.Title = "Thanh Toan";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<h2>Chi tiết hóa đơn cho mã chuồng @ViewBag.MaChuong</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Không có hóa đơn nào cho mã chuồng này.</p>
+}
+else
+{
+    <div class="d-flex justify-content-center align-items-center flex-column ">
+        <table class="table table-hover w-75">
+            <thead>
+                <tr>
+                    <th>Mã hóa đơn</th>
+                    <th>Thời gian nhận</th>
+                    <th>Thời gian trả</th>
+                    <th>Tổng tiền</th>
+                    <th>Tình trạng hóa đơn</th>
+                </tr>
+            </thead>
+            <tbody style="border-bottom: 0;">
+                @foreach (var hd in Model)
+                {
+                    <tr>
+                        <td>@hd.ID_HoaDon</td>
+                        <td>@hd.ThoiGianNhan</td>
+                        <td>@hd.ThoiGianTra</td>
+                        <td>@hd.TongTien</td>
+                        <td>@hd.TinhTrangHD</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+<div class="d-flex justify-content-end align-content-end w-75">
+    @if (ViewBag.ThanhToan)
+    {
+        <a href="@Url.Action("ThanhToan", "HoaDons", new { id = ViewBag.MaChuong }, null)" class="btn btn-primary  me-2">
+            Thanh toán
+        </a>
+    }
+
+
+
+    <a href="@Url.Action("Index", "Home")" class="btn btn-success">Quay lại trang chủ</a>
+
+</div>

@@ -1,0 +1,75 @@
+﻿@model QL_THUCUNG.Models.HoaDon
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HoaDon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGianNhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGianNhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGianTra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGianTra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrangHD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangHD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chuong.TenChuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chuong.TenChuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhVien.TenThanhVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhVien.TenThanhVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhToanDV.ID_ThanhVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhToanDV.ID_ThanhVien)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_HoaDon }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,50 @@
+﻿@model QL_THUCUNG.Models.Chuong
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin chi tiết</h2>
+
+<div>
+    <dl class="dl-horizontal" style="margin:10px">
+        <dt>
+            Tên Chuồng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenChuong)
+        </dd>
+
+        <dt>
+            Tình trạng Chuồng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangChuong)
+        </dd>
+
+        <dt>
+            Hoạt động
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoatdong)
+        </dd>
+
+        <dt>
+            Giá Chuồng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia.GiaChuong)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", "Chuongs", new { id = Model.ID_Chuong })" class="btn btn-success m-2">Sửa</a>
+    <a href="@Url.Action("Index", "Chuongs")" class="btn btn-primary m-2">Quay lại</a>
+</p>

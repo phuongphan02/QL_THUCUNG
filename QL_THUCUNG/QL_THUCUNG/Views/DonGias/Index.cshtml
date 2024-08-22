@@ -1,0 +1,45 @@
+﻿@model IEnumerable<QL_THUCUNG.Models.DonGia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
+
+}
+<h2>DANH SÁCH ĐƠN GIÁ</h2>
+<p>
+    <a href="@Url.Action("Create", "DonGias")" class="btn btn-success me-2">Tạo mới</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID giá
+        </th>
+        <th>
+            Giá Chuồng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_Gia)
+            </td>
+            <td>
+                @string.Format("{0:N0} VND", item.GiaChuong)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit",
+                        new { id = item.ID_Gia})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/edit.png" width="20" height="20" /></abbr></a> |
+                <a href="@Url.Action("Details",
+                        new { id = item.ID_Gia})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/details.png" width="20" height="20" /></abbr></a> |
+                <a href="@Url.Action("Delete",
+                        new { id = item.ID_Gia})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/delete.png" width="20" height="20" /></abbr></a>
+            </td>
+        </tr>
+    }
+
+</table>

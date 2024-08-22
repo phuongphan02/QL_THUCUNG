@@ -1,0 +1,106 @@
+﻿.name-net {
+    color: white;
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid white;
+}
+
+.menu {
+    width: 20%;
+    background-color: darkslategray;
+    position: fixed;
+    margin: 0;
+    left: 0;
+    height: 100vh;
+}
+
+.content-menu {
+    height: 100%;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.content-menu .item {
+    display: flex;
+    align-items: center;
+}
+
+.content-menu .menuitem {
+    padding: 15px;
+    margin: 10px 0;
+    transition: 0.4s;
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 100%;
+}
+
+.content-menu .active, .menuitem:hover {
+    color: darkslategray;
+    border-radius: 15px;
+    padding-left: 30px;
+    background-color: white;
+}
+
+.content-content {
+    width: 80%;
+}
+
+.banner {
+    height: 70px;
+    width: 100%;
+    background-color: darkslategray;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 20px;
+}
+
+.user-banner a {
+    text-decoration: none;
+    color: white;
+}
+
+    .user-banner a:hover {
+        color: aquamarine;
+    }
+
+    .user-banner a:active {
+        color: yellow;
+    }
+
+/* Phần Chuồng đang sử dụng */
+.Chuongchu {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Chuongconnect {
+    text-align: center;
+    width: 150px;
+    height: 100px;
+    padding: 0 20px 20px 20px;
+    margin: 20px;
+}
+
+/* Phần chỉnh sửa chuồng */
+.allChuong {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Chuongnet {
+    text-align: center;
+    width: 200px;
+    height: 250px;
+    padding: 0 20px 20px 20px;
+    margin: 10px;
+}

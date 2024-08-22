@@ -1,0 +1,55 @@
+﻿@model IEnumerable<QL_THUCUNG.Models.DichVu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2> DANH SÁCH DỊCH VỤ</h2>
+<p>
+    <a href="@Url.Action("Create", "DichVus")" class="btn btn-success me-2">Tạo mới</a>
+    <a href="@Url.Action("TimKiemNC", "DichVus")" class="btn btn-success me-2">Tìm kiếm</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã dịch vụ
+        </th>
+        <th>
+            Tên dịch vụ
+        </th>
+        <th>
+            Ảnh dịch vụ
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>Chức năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_DV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDV)
+            </td>
+            <td>
+                <img src="@Url.Content("~/Images/"+ item.AnhSP)" width="50" height="50" />
+            </td>
+            <td>
+                @string.Format("{0:N0} VND", item.GiaBan)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit",
+                        new { id = item.ID_DV})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/edit.png" width="20" height="20" /></abbr></a> |
+                <a href="@Url.Action("Details",
+                        new { id = item.ID_DV})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/details.png" width="20" height="20" /></abbr></a> |
+                <a href="@Url.Action("Delete",
+                        new { id = item.ID_DV})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/delete.png" width="20" height="20" /></abbr></a>
+            </td>
+        </tr>
+    }
+
+</table>

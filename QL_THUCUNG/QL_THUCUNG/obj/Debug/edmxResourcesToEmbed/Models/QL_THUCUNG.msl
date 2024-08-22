@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QL_THUCUNGModelStoreContainer" CdmEntityContainer="QL_THUCUNGEntities">
+    <EntitySetMapping Name="Chuongs">
+      <EntityTypeMapping TypeName="QL_THUCUNGModel.Chuong">
+        <MappingFragment StoreEntitySet="Chuong">
+          <ScalarProperty Name="ID_Chuong" ColumnName="ID_Chuong" />
+          <ScalarProperty Name="TenChuong" ColumnName="TenChuong" />
+          <ScalarProperty Name="TinhTrangChuong" ColumnName="TinhTrangChuong" />
+          <ScalarProperty Name="ID_gia" ColumnName="ID_gia" />
+          <ScalarProperty Name="Hoatdong" ColumnName="Hoatdong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DichVus">
+      <EntityTypeMapping TypeName="QL_THUCUNGModel.DichVu">
+        <MappingFragment StoreEntitySet="DichVu">
+          <ScalarProperty Name="ID_DV" ColumnName="ID_DV" />
+          <ScalarProperty Name="TenDV" ColumnName="TenDV" />
+          <ScalarProperty Name="AnhSP" ColumnName="AnhSP" />
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonGias">
+      <EntityTypeMapping TypeName="QL_THUCUNGModel.DonGia">
+        <MappingFragment StoreEntitySet="DonGia">
+          <ScalarProperty Name="ID_Gia" ColumnName="ID_Gia" />
+          <ScalarProperty Name="GiaChuong" ColumnName="GiaChuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDons">
+      <EntityTypeMapping TypeName="QL_THUCUNGModel.HoaDon">
+        <MappingFragment StoreEntitySet="HoaDon">
+          <ScalarProperty Name="ID_HoaDon" ColumnName="ID_HoaDon" />
+          <ScalarProperty Name="ID_ThanhVien" ColumnName="ID_ThanhVien" />
+          <ScalarProperty Name="ID_TTDV" ColumnName="ID_TTDV" />
+          <ScalarProperty Name="ID_Chuong" ColumnName="ID_Chuong" />
+          <ScalarProperty Name="ThoiGianNhan" ColumnName="ThoiGianNhan" />
+          <ScalarProperty Name="ThoiGianTra" ColumnName="ThoiGianTra" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="TinhTrangHD" ColumnName="TinhTrangHD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThanhToanDVs">
+      <EntityTypeMapping TypeName="QL_THUCUNGModel.ThanhToanDV">
+        <MappingFragment StoreEntitySet="ThanhToanDV">
+          <ScalarProperty Name="ID_TTDV" ColumnName="ID_TTDV" />
+          <ScalarProperty Name="ID_ThanhVien" ColumnName="ID_ThanhVien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThanhViens">
+      <EntityTypeMapping TypeName="QL_THUCUNGModel.ThanhVien">
+        <MappingFragment StoreEntitySet="ThanhVien">
+          <ScalarProperty Name="ID_ThanhVien" ColumnName="ID_ThanhVien" />
+          <ScalarProperty Name="TenThanhVien" ColumnName="TenThanhVien" />
+          <ScalarProperty Name="TenDN" ColumnName="TenDN" />
+          <ScalarProperty Name="Matkhau" ColumnName="Matkhau" />
+          <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTTTDVs">
+      <EntityTypeMapping TypeName="QL_THUCUNGModel.CTTTDV">
+        <MappingFragment StoreEntitySet="CTTTDV">
+          <ScalarProperty Name="ID_TTDV" ColumnName="ID_TTDV" />
+          <ScalarProperty Name="ID_DV" ColumnName="ID_DV" />
+          <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Chuong_TimKiem" FunctionName="QL_THUCUNGModel.Store.Chuong_TimKiem" />
+    <FunctionImportMapping FunctionImportName="DonGia_TimKiem" FunctionName="QL_THUCUNGModel.Store.DonGia_TimKiem" />
+    <FunctionImportMapping FunctionImportName="TimKiem_DV" FunctionName="QL_THUCUNGModel.Store.TimKiem_DV" />
+  </EntityContainerMapping>
+</Mapping>

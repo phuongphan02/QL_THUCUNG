@@ -1,0 +1,96 @@
+﻿@model IEnumerable<QL_THUCUNG.Models.DichVu>
+@using System.Globalization
+@{
+    ViewBag.Title = "DỊCH VỤ";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    int i = 0;
+}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .card {
+        overflow: hidden;
+    }
+
+        .card img:hover {
+            transform: scale(1.2);
+        }
+
+        .card img {
+            transition: transform 0.4s;
+        }
+</style>
+<div class="sticky-top bg-white">
+    <div class="d-flex justify-content-between align-items-center">
+        <img src="~/Images/logo1.png" style="width: 80px; height: 80px;" alt="">
+        <h1 class="text-center" style="color: darkslategray; margin-bottom:30px"><b><i>CÁC DỊCH VỤ</i></b></h1>
+        <img src="~/Images/logo2.png" style="width: 80px; height: 80px;" alt="">
+    </div>
+    <hr />
+    <div class="w-100 d-flex justify-content-end">
+        @Html.Action("SanPhamPartial", "SanPham")
+        @*<button type="button" class="btn btn-success">
+                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng
+            </button>*@
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="dichvu row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-sm-6">
+                <div class="card product-card">
+                    <img src="~/Images/@Html.DisplayFor(modelItem => item.AnhSP)" alt="Ảnh sản phẩm" class="card-img-top">
+                    
+                    <div class="card-body product-body d-flex align-items-center flex-column justify-content-center">
+                        <div class="product-label">
+                            <span class="badge bg-danger">-30%</span>
+                            <span class="badge bg-success">NEW</span>
+                        </div>
+                        <h3 class="card-title product-name"><a href="#">@Html.DisplayFor(modelItem => item.TenDV)</a></h3>
+                        <h4 class="card-text product-price">@item.GiaBan.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")).Replace(",", ".") VND</h4>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <button href="#" class="btn btn-primary add-to-cart-btn" data-bs-toggle="modal"
+                                data-bs-target="#mon@{i++;}@i">
+                            <i class="fa fa-shopping-cart"></i> Đặt
+                        </button>
+                        <div class="modal fade" id="mon@{i++;}@i" tabindex="-1" aria-labelledby="mon@{i++;}@i"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="mon@{i++;}@i">Bạn có chắc là đặt <span style="color:red">@Html.DisplayFor(modelItem => item.TenDV)</span>?</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Giá: @Html.DisplayFor(modelItem => item.GiaBan)</p>
+                                        <p>Số lượng: 1</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            Thoát
+                                        </button>
+                                        <a href="@Url.Action("ThemSanPham", "SanPham", new {@madv=item.ID_DV,@url=Request.Url.ToString()})" type="button" style="cursor:pointer" class="btn btn-primary">
+                                            Đặt dịch vụ
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

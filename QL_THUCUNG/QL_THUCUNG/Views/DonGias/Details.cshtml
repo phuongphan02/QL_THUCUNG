@@ -1,0 +1,35 @@
+﻿@model QL_THUCUNG.Models.DonGia
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DonGia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaChuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaChuong)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", "DonGias", new { id = Model.ID_Gia })" class="btn btn-success m-2">Sửa</a>
+    <a href="@Url.Action("Index", "DonGias")" class="btn btn-primary m-2">Quay lại</a>
+</p>

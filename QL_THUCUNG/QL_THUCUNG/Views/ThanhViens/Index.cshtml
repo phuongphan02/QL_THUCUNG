@@ -1,0 +1,65 @@
+﻿@model IEnumerable<QL_THUCUNG.Models.ThanhVien>
+@using QL_THUCUNG.Helpers
+
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+
+}
+
+<h2>DANH SÁCH THÀNH VIÊN</h2>
+<p>
+    <a href="@Url.Action("Create", "ThanhViens")" class="btn btn-success me-2">Tạo mới</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            Tên thành viên
+        </th>
+        <th>
+            Tên đăng nhập
+        </th>
+        <th>
+            Mật khẩu
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>Chức năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{i++;}
+                @i
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenThanhVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matkhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit",
+                        new { id = item.ID_ThanhVien})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/edit.png" width="20" height="20" /></abbr></a> |
+                <a href="@Url.Action("Details",
+                        new { id = item.ID_ThanhVien})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/details.png" width="20" height="20" /></abbr></a> |
+                <a href="@Url.Action("Delete",
+                        new { id = item.ID_ThanhVien})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/delete.png" width="20" height="20" /></abbr></a>
+            </td>
+        </tr>
+    }
+
+</table>

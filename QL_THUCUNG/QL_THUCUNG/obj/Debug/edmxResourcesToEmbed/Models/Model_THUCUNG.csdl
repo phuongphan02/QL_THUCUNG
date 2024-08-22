@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_THUCUNGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Chuong">
+    <Key>
+      <PropertyRef Name="ID_Chuong" />
+    </Key>
+    <Property Name="ID_Chuong" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenChuong" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TinhTrangChuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_gia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Hoatdong" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DonGia" Relationship="Self.FK__Chuong__ID_gia__4BAC3F29" FromRole="Chuong" ToRole="DonGia" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__ID_Chuon__71D1E811" FromRole="Chuong" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="DichVu">
+    <Key>
+      <PropertyRef Name="ID_DV" />
+    </Key>
+    <Property Name="ID_DV" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenDV" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AnhSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GiaBan" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="CTTTDVs" Relationship="Self.FK__CTTTDV__ID_DV__52593CB8" FromRole="DichVu" ToRole="CTTTDV" />
+  </EntityType>
+  <EntityType Name="DonGia">
+    <Key>
+      <PropertyRef Name="ID_Gia" />
+    </Key>
+    <Property Name="ID_Gia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GiaChuong" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Chuongs" Relationship="Self.FK__Chuong__ID_gia__4BAC3F29" FromRole="DonGia" ToRole="Chuong" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="ID_HoaDon" />
+    </Key>
+    <Property Name="ID_HoaDon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_ThanhVien" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_TTDV" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_Chuong" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ThoiGianNhan" Type="DateTime" Precision="3" />
+    <Property Name="ThoiGianTra" Type="DateTime" Precision="3" />
+    <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TinhTrangHD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Chuong" Relationship="Self.FK__HoaDon__ID_Chuon__71D1E811" FromRole="HoaDon" ToRole="Chuong" />
+    <NavigationProperty Name="ThanhVien" Relationship="Self.FK__HoaDon__ID_Thanh__70DDC3D8" FromRole="HoaDon" ToRole="ThanhVien" />
+    <NavigationProperty Name="ThanhToanDV" Relationship="Self.FK__HoaDon__ID_TTDV__6FE99F9F" FromRole="HoaDon" ToRole="ThanhToanDV" />
+  </EntityType>
+  <EntityType Name="ThanhToanDV">
+    <Key>
+      <PropertyRef Name="ID_TTDV" />
+    </Key>
+    <Property Name="ID_TTDV" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_ThanhVien" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__ID_TTDV__6FE99F9F" FromRole="ThanhToanDV" ToRole="HoaDon" />
+    <NavigationProperty Name="CTTTDVs" Relationship="Self.FK__CTTTDV__ID_TTDV__5165187F" FromRole="ThanhToanDV" ToRole="CTTTDV" />
+  </EntityType>
+  <EntityType Name="ThanhVien">
+    <Key>
+      <PropertyRef Name="ID_ThanhVien" />
+    </Key>
+    <Property Name="ID_ThanhVien" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenThanhVien" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenDN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Matkhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__ID_Thanh__70DDC3D8" FromRole="ThanhVien" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="CTTTDV">
+    <Key>
+      <PropertyRef Name="ID_TTDV" />
+      <PropertyRef Name="ID_DV" />
+    </Key>
+    <Property Name="ID_TTDV" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_DV" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Soluong" Type="Int32" />
+    <Property Name="Gia" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="DichVu" Relationship="Self.FK__CTTTDV__ID_DV__52593CB8" FromRole="CTTTDV" ToRole="DichVu" />
+    <NavigationProperty Name="ThanhToanDV" Relationship="Self.FK__CTTTDV__ID_TTDV__5165187F" FromRole="CTTTDV" ToRole="ThanhToanDV" />
+  </EntityType>
+  <Association Name="FK__Chuong__ID_gia__4BAC3F29">
+    <End Role="DonGia" Type="Self.DonGia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Chuong" Type="Self.Chuong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonGia">
+        <PropertyRef Name="ID_Gia" />
+      </Principal>
+      <Dependent Role="Chuong">
+        <PropertyRef Name="ID_gia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__ID_Chuon__71D1E811">
+    <End Role="Chuong" Type="Self.Chuong" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chuong">
+        <PropertyRef Name="ID_Chuong" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="ID_Chuong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTTTDV__ID_DV__52593CB8">
+    <End Role="DichVu" Type="Self.DichVu" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTTTDV" Type="Self.CTTTDV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DichVu">
+        <PropertyRef Name="ID_DV" />
+      </Principal>
+      <Dependent Role="CTTTDV">
+        <PropertyRef Name="ID_DV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__ID_Thanh__70DDC3D8">
+    <End Role="ThanhVien" Type="Self.ThanhVien" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThanhVien">
+        <PropertyRef Name="ID_ThanhVien" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="ID_ThanhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__ID_TTDV__6FE99F9F">
+    <End Role="ThanhToanDV" Type="Self.ThanhToanDV" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThanhToanDV">
+        <PropertyRef Name="ID_TTDV" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="ID_TTDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTTTDV__ID_TTDV__5165187F">
+    <End Role="ThanhToanDV" Type="Self.ThanhToanDV" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTTTDV" Type="Self.CTTTDV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThanhToanDV">
+        <PropertyRef Name="ID_TTDV" />
+      </Principal>
+      <Dependent Role="CTTTDV">
+        <PropertyRef Name="ID_TTDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_THUCUNGEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Chuongs" EntityType="Self.Chuong" />
+    <EntitySet Name="DichVus" EntityType="Self.DichVu" />
+    <EntitySet Name="DonGias" EntityType="Self.DonGia" />
+    <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+    <EntitySet Name="ThanhToanDVs" EntityType="Self.ThanhToanDV" />
+    <EntitySet Name="ThanhViens" EntityType="Self.ThanhVien" />
+    <EntitySet Name="CTTTDVs" EntityType="Self.CTTTDV" />
+    <AssociationSet Name="FK__Chuong__ID_gia__4BAC3F29" Association="Self.FK__Chuong__ID_gia__4BAC3F29">
+      <End Role="DonGia" EntitySet="DonGias" />
+      <End Role="Chuong" EntitySet="Chuongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__ID_Chuon__71D1E811" Association="Self.FK__HoaDon__ID_Chuon__71D1E811">
+      <End Role="Chuong" EntitySet="Chuongs" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTTTDV__ID_DV__52593CB8" Association="Self.FK__CTTTDV__ID_DV__52593CB8">
+      <End Role="DichVu" EntitySet="DichVus" />
+      <End Role="CTTTDV" EntitySet="CTTTDVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__ID_Thanh__70DDC3D8" Association="Self.FK__HoaDon__ID_Thanh__70DDC3D8">
+      <End Role="ThanhVien" EntitySet="ThanhViens" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__ID_TTDV__6FE99F9F" Association="Self.FK__HoaDon__ID_TTDV__6FE99F9F">
+      <End Role="ThanhToanDV" EntitySet="ThanhToanDVs" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTTTDV__ID_TTDV__5165187F" Association="Self.FK__CTTTDV__ID_TTDV__5165187F">
+      <End Role="ThanhToanDV" EntitySet="ThanhToanDVs" />
+      <End Role="CTTTDV" EntitySet="CTTTDVs" />
+    </AssociationSet>
+    <FunctionImport Name="Chuong_TimKiem">
+      <Parameter Name="ID_Chuong" Mode="In" Type="String" />
+      <Parameter Name="TenChuong" Mode="In" Type="String" />
+      <Parameter Name="TinhTrangChuong" Mode="In" Type="String" />
+      <Parameter Name="ID_gia" Mode="In" Type="String" />
+      <Parameter Name="Hoatdong" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DonGia_TimKiem">
+      <Parameter Name="ID_gia" Mode="In" Type="String" />
+      <Parameter Name="GiaChuong" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TimKiem_DV">
+      <Parameter Name="Ma" Mode="In" Type="String" />
+      <Parameter Name="Ten" Mode="In" Type="String" />
+      <Parameter Name="Giatu" Mode="In" Type="String" />
+      <Parameter Name="Giaden" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

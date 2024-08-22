@@ -1,0 +1,52 @@
+﻿@model IEnumerable<QL_THUCUNG.Models.CTTTDV>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DichVu.TenDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhToanDV.ID_ThanhVien)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soluong)
+        </td>
+        <td>
+             @string.Format("{0:N0} VND", item.Gia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DichVu.TenDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThanhToanDV.ID_ThanhVien)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID_TTDV }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID_TTDV }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID_TTDV })
+        </td>
+    </tr>
+}
+
+</table>

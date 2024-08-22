@@ -1,0 +1,69 @@
+﻿@using QL_THUCUNG.Models
+@model ThanhToan
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
+}
+
+<div class="thanhtoan container">
+    <h1 class="text-center" style="color: darkslategray;"><b>THANH TOÁN</b></h1>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="tienChuong col-5">
+                <table>
+                    <tr>
+                        <td><b>Mã chuồng: </b></td>
+                        <td>@ViewBag.id_Chuong</td>
+                    </tr>
+                    <tr>
+                        <td><b>Tên Khách: </b></td>
+                        <td>@ViewBag.tenKH</td>
+                    </tr>
+                    <tr>
+                        <td><b>Nhập chuồng lúc: </b></td>
+                        <td>@ViewBag.tg_Mo</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tiendichvu col-7">
+                <p>@ViewBag.tb</p>
+                @Html.Action("ThanhToanDVPatirial", "ThanhToan")
+            </div>
+        </div>
+        <div class="w-100 d-flex justify-content-end">
+            <table>
+                <tr>
+                    <th><div class="me-4">Tổng tiền sử dụng dịch vụ: </div></th>
+                    <td>@ViewBag.Tien VNĐ</td>
+                </tr>
+                <tr>
+                    <th>Tổng tiền cần thanh toán: </th>
+                    <td>@ViewBag.tongtien VNĐ</td>
+                </tr>
+            </table>
+        </div>
+        <div class="w-100 d-flex justify-content-end pt-5">
+            <a href="@Url.Action("TinhTien","ThanhToan", new {@id_Chuong = Model.id_Chuong})" type="button" style="cursor:pointer" class="btn btn-primary">
+                Thanh Toán
+            </a>
+        </div>
+    </div>
+</div>
+@*<h2>Thanh toán</h2>
+    <p> Mã chuồng: @ViewBag.id_Chuong</p>
+    <p> Tên khách: @ViewBag.tenKH</p>
+    <p> Mở chuồng lúc: @ViewBag.tg_Mo</p>
+    <p>@ViewBag.tb</p>
+    <p>@ViewBag.tg</p>
+    @Html.Action("ThanhToanDVPatirial", "ThanhToan")
+    <p>Tiền sử dụng dịch vụ: @ViewBag.Tien VNĐ</p>
+    <div>
+       Tổng tiền cần thanh toán: @ViewBag.tongtien VNĐ
+    </div>
+    <div>
+        <a href="@Url.Action("TinhTien","ThanhToan", new {@id_Chuong = Model.id_Chuong})" type="button" style="cursor:pointer" class="btn btn-primary">
+            Thanh Toán
+        </a>
+    </div>*@

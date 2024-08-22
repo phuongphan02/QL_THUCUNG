@@ -1,0 +1,56 @@
+﻿@model QL_THUCUNG.Models.Chuong
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string hd = "";
+}
+<h3>Bạn có chắc muốn xóa không?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Chuồng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenChuong)
+        </dd>
+
+        <dt>
+            Tình trạng Chuồng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangChuong)
+        </dd>
+
+        <dt>
+            Hoạt động
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.Hoatdong)
+
+        </dd>
+
+        <dt>
+            Giá Chuồng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia.GiaChuong)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            <a href="@Url.Action("Index", "Chuongs")" class="btn btn-primary me-2">Quay lại</a>
+        </div>
+    }
+</div>

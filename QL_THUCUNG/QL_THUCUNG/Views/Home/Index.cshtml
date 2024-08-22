@@ -1,0 +1,56 @@
+﻿@model IEnumerable<QL_THUCUNG.Models.Chuong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string t = "";
+}
+
+<div class="Chuong">
+    <div class="container">
+        <div class="allChuong">
+            @foreach (var item in Model)
+            {
+                <div class="Chuongnet border border-dark rounded-3">
+                    <h4>
+                        @if (item.Hoatdong == false)
+                        {
+                            t = "gray";
+                        }
+                        else { t = "green"; }
+                        @Html.DisplayFor(modelItem => item.TenChuong)
+                    </h4>
+                    <a href="@Url.Action("ThanhToan","ThanhToan", new {@id_Chuong = item.ID_Chuong})">
+                        <i class="fa-solid fa-house pb-2"
+                           style="font-size: 50px;
+                                color: @t;
+                          margin: 20px">
+                        </i>
+
+                    </a>
+                    <div>
+                        @if (item.Hoatdong == false)
+                        {
+                            <a href="@Url.Action("MoChuong","ThanhToan",new {@id_Chuong = item.ID_Chuong})" type="button" class="btn btn-primary">
+                                Đăng ký
+                            </a>
+                        }
+                        @if (item.Hoatdong == true)
+                        {
+                           
+                                <a href="@Url.Action("DongChuong", "ThanhToan", new { id_Chuong = item.ID_Chuong })" type="button" class="btn btn-primary" style="margin-bottom: 20px">
+                                    Hủy đăng ký
+                                </a>
+                        
+                            <a href="@Url.Action("ChiTietHoaDon","HoaDons",new {id_Chuong = item.ID_Chuong})" type="button" class="btn btn-primary">
+                                Tính tiền
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

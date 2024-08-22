@@ -1,0 +1,54 @@
+﻿@model QL_THUCUNG.Models.ThanhVien
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin:10px">
+    <h3>Bạn có chắc là muốn xóa không?</h3>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên thành viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenThanhVien)
+        </dd>
+
+        <dt>
+            Tên đăng nhập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDN)
+        </dd>
+
+        <dt>
+            Mật khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matkhau)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            <a href="@Url.Action("Index", "ThanhViens")" class="btn btn-primary me-2">Quay lại</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<QL_THUCUNG.Models.Chuong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string hd = "";
+    int i = 0;
+}
+<h2>DANH SÁCH Chuồng</h2>
+<p>
+    <a href="@Url.Action("Create", "Chuongs")" class="btn btn-success me-2">Tạo mới</a>
+    <a href="@Url.Action("TimKiemNC", "Chuongs")" class="btn btn-success me-2">Tìm kiếm</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            Tên Chuồng
+        </th>
+        <th>
+            Tình trạng Chuồng
+        </th>
+        <th>
+            Tình trạng hoạt động
+        </th>
+        <th>
+            Giá Chuồng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{i++;}
+                @i
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrangChuong)
+            </td>
+            <td>
+                @{if (item.Hoatdong == true)
+                    { hd = "Đang được sử dụng"; }
+                    else
+                    { hd = "Trống"; }
+                }
+                @hd
+            </td>
+            <td>
+                @string.Format("{0:N0} VND", item.DonGia.GiaChuong)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit",
+                        new { id = item.ID_Chuong})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/edit.png" width="20" height="20" /></abbr></a> |
+                <a href="@Url.Action("Details",
+                        new { id = item.ID_Chuong})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/details.png" width="20" height="20" /></abbr></a> |
+                <a href="@Url.Action("Delete",
+                        new { id = item.ID_Chuong})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="/images/delete.png" width="20" height="20" /></abbr></a>
+            </td>
+        </tr>
+    }
+
+</table>

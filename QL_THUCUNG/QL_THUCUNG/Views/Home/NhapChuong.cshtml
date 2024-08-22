@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "NhapChuong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nhập chuồng @ViewBag.id</h2>
+<p>Bạn muốn nhập chuồng?</p>
+<p> Giờ nhập: @ViewBag.time</p>
+<a href="@Url.Action("NhapChuong","Home",new { @id = @ViewBag.id })" type="button" class="btn btn-primary">
+    nhập
+</a>
+
